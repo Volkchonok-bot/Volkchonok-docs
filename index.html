@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Документация и Команды Бота «Волчонок»</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.75);
+            --accent-color: #6366f1;
+            --accent-hover: #4f46e5;
+            --text-color: #f8fafc;
+            --text-muted: #94a3b8;
+            --code-bg: #090d16;
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Фоновое изображение avatar.jpg */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('avatar.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            filter: blur(12px) brightness(0.25);
+            z-index: -1;
+            transform: scale(1.05);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            padding: 40px 20px;
+        }
+
+        /* Шапка с круглым аватаром */
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .avatar-container {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            padding: 5px;
+            background: linear-gradient(135deg, var(--accent-color), #ec4899);
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.4);
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .avatar-container:hover {
+            transform: scale(1.05);
+        }
+
+        .avatar-container img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            background-color: #1e293b;
+        }
+
+        h1 {
+            font-size: 2.3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #fff, var(--text-muted));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+        }
+
+        /* Панель поиска */
+        .search-box {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto 35px auto;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 14px 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            background: var(--card-bg);
+            color: #fff;
+            font-size: 1rem;
+            backdrop-filter: blur(10px);
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-box input:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 15px rgba(99, 102, 241, 0.3);
+        }
+
+        /* Список команд */
+        .commands-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        .command-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .command-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .command-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .version-badge {
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+        }
+
+        .command-syntax {
+            background-color: var(--code-bg);
+            color: #38bdf8;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.95rem;
+            margin-bottom: 14px;
+            word-break: break-all;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .command-description {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Кнопка поддержки */
+        .support-container {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .support-btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #0066ff;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .support-btn:hover {
+            background-color: #0052cc;
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 30px 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Шапка с круглым аватаром -->
+        <header>
+            <div class="avatar-container">
+                <img src="avatar.jpg" alt="Аватар бота Волчонок" onerror="this.src='https://via.placeholder.com/130?text=Volkchonok'">
+            </div>
+            <h1>Документация и Команды Бота «Волчонок»</h1>
+            <p class="subtitle">Официальное руководство по использованию слэш-команд многофункционального бота Волчонок (v1.2)</p>
+        </header>
+
+        <!-- Поиск -->
+        <div class="search-box">
+            <input type="text" id="searchInput" onkeyup="filterCommands()" placeholder="Поиск по командам или описанию...">
+        </div>
+
+        <!-- Сетка команд -->
+        <div class="commands-grid" id="commandsGrid">
+
+            <div class="command-card">
+                <div>
+                    <div class="card-header">
+                        <span class="command-name">/warn</span>
+                        <span class="version-badge">v1.2</span>
+                    </div>
+                    <div class="command-syntax">/warn [участник] [причина]</div>
+                    <p class="command-description">Выдает предупреждение (варн) участнику. При 3/3 предупреждениях бот автоматически заглушает его на 24 часа и отправляет сообщение в ЛС.</p>
+                </div>
+            </div>
+
+            <div class="command-card">
+                <div>
+                    <div class="card-header">
+                        <span class="command-name">/unwarn</span>
+                        <span class="version-badge">v1.2</span>
+                    </div>
+                    <div class="command-syntax">/unwarn [участник] [причина]</div>
+                    <p class="command-description">Снимает одно предупреждение с участника сервера и отправляет ему уведомление в ЛС.</p>
+                </div>
+            </div>
+
+            <div class="command-card">
+                <div>
+                    <div class="card-header">
+                        <span class="command-name">/warns</span>
+                        <span class="version-badge">v1.2</span>
+                    </div>
+                    <div class="command-syntax">/warns</div>
+                    <p class="command-description">Показывает живой обновляемый список всех нарушителей на сервере. Если варнов нет — выводит сообщение о том, что на сервере царит порядок.</p>
+                </div>
+            </div>
+
+            <div class="command-card">
+                <div>
+                    <div class="card-header">
+                        <span class="command-name">/autorole</span>
+                        <span class="version-badge">v1.2</span>
+                    </div>
+                    <div class="command-syntax">/autorole [роль]</div>
+                    <p class="command-description">Назначает роль, которая будет автоматически выдаваться новым участникам при входе на сервер.</p>
+                </div>
+            </div>
+
+            <div class="command-card">
+                <div>
+                    <div class="card-header">
+                        <span class="command-name">/mute</span>
+                        <span class="version-badge">v1.2</span>
+                    </div>
+                    <div class="command-syntax">/mute [участник] [минуты] [причина]</div>
+                    <p class="command-description">Выдает временный таймаут (мут) участнику на указанное число минут.</p>
+                </div>
+            </div>
+
+            <div class="command-card">
+                <div>
+                    <div class="card-header">
+                        <span class="command-name">/clear</span>
+                        <span class="version-badge">v1.2</span>
+                    </div>
+                    <div class="command-syntax">/clear [количество]</div>
+                    <p class="command-description">Быстро удаляет от 1 до 100 сообщений в текущем текстовом канале.</p>
+                </div>
+            </div>
+
+            <div class="command-card">
+                <div>
+                    <div class="card-header">
+                        <span class="command-name">/infobot</span>
+                        <span class="version-badge">v1.2</span>
+                    </div>
+                    <div class="command-syntax">/infobot</div>
+                    <p class="command-description">Выводит подробную информацию о версии бота «Волчонок», дате последнего обновления и список доступных команд.</p>
+                </div>
+            </div>
+
+            <div class="command-card">
+                <div>
+                    <div class="card-header">
+                        <span class="command-name">/serverinfo</span>
+                        <span class="version-badge">v1.2</span>
+                    </div>
+                    <div class="command-syntax">/serverinfo</div>
+                    <p class="command-description">Отображает полную информацию о сервере: количество участников, владельца, количество каналов и иконку.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Кнопка поддержки -->
+        <div class="support-container">
+            <a href="mailto:volkchonoktex@gmail.com?subject=Вопрос%20в%20Тех.поддержку%20Волчонок" class="support-btn">
+                Написать в тех.поддержку
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2026 Официальная документация бота «Волчонок». Все права защищены.
+    </footer>
+
+    <script>
+        function filterCommands() {
+            const input = document.getElementById('searchInput');
+            const filter = input.value.toLowerCase();
+            const grid = document.getElementById('commandsGrid');
+            const cards = grid.getElementsByClassName('command-card');
+
+            for (let i = 0; i < cards.length; i++) {
+                const text = cards[i].innerText.toLowerCase();
+                if (text.includes(filter)) {
+                    cards[i].style.display = "";
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+</body>
+</html>
+
