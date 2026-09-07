@@ -15,14 +15,12 @@
             --code-bg: #090d16;
             --border-color: rgba(255, 255, 255, 0.1);
         }
-
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
         body {
             background-color: var(--bg-color);
             color: var(--text-color);
@@ -33,7 +31,6 @@
             flex-direction: column;
             align-items: center;
         }
-
         /* Фоновое изображение avatar.jpg */
         body::before {
             content: "";
@@ -50,13 +47,11 @@
             z-index: -1;
             transform: scale(1.05);
         }
-
         .container {
             width: 100%;
             max-width: 1100px;
             padding: 40px 20px;
         }
-
         /* Шапка с круглым аватаром */
         header {
             text-align: center;
@@ -65,7 +60,6 @@
             flex-direction: column;
             align-items: center;
         }
-
         .avatar-container {
             width: 130px;
             height: 130px;
@@ -76,11 +70,9 @@
             margin-bottom: 20px;
             transition: transform 0.3s ease;
         }
-
         .avatar-container:hover {
             transform: scale(1.05);
         }
-
         .avatar-container img {
             width: 100%;
             height: 100%;
@@ -88,7 +80,6 @@
             object-fit: cover;
             background-color: #1e293b;
         }
-
         h1 {
             font-size: 2.3rem;
             font-weight: 700;
@@ -97,20 +88,17 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-
         p.subtitle {
             color: var(--text-muted);
             font-size: 1.1rem;
             max-width: 600px;
         }
-
         /* Панель поиска */
         .search-box {
             width: 100%;
             max-width: 600px;
             margin: 0 auto 35px auto;
         }
-
         .search-box input {
             width: 100%;
             padding: 14px 20px;
@@ -123,19 +111,16 @@
             outline: none;
             transition: all 0.3s ease;
         }
-
         .search-box input:focus {
             border-color: var(--accent-color);
             box-shadow: 0 0 15px rgba(99, 102, 241, 0.3);
         }
-
         /* Список команд */
         .commands-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 20px;
         }
-
         .command-card {
             background: var(--card-bg);
             border-radius: 16px;
@@ -147,26 +132,22 @@
             flex-direction: column;
             justify-content: space-between;
         }
-
         .command-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
             border-color: rgba(99, 102, 241, 0.4);
         }
-
         .card-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 12px;
         }
-
         .command-name {
             font-size: 1.3rem;
             font-weight: 600;
             color: #fff;
         }
-
         .version-badge {
             background: rgba(99, 102, 241, 0.2);
             color: #a5b4fc;
@@ -176,7 +157,6 @@
             font-weight: 600;
             border: 1px solid rgba(99, 102, 241, 0.3);
         }
-
         .command-syntax {
             background-color: var(--code-bg);
             color: #38bdf8;
@@ -188,19 +168,16 @@
             word-break: break-all;
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
-
         .command-description {
             color: var(--text-muted);
             font-size: 0.95rem;
             line-height: 1.5;
         }
-
         /* Кнопка поддержки */
         .support-container {
             text-align: center;
             margin-top: 40px;
         }
-
         .support-btn {
             display: inline-block;
             padding: 12px 24px;
@@ -211,11 +188,9 @@
             font-weight: bold;
             transition: background 0.3s;
         }
-
         .support-btn:hover {
             background-color: #0052cc;
         }
-
         footer {
             margin-top: auto;
             padding: 30px 0;
@@ -228,7 +203,6 @@
     </style>
 </head>
 <body>
-
     <div class="container">
         <!-- Шапка с круглым аватаром -->
         <header>
@@ -238,48 +212,32 @@
             <h1>Документация и Команды Бота «Волчонок»</h1>
             <p class="subtitle">Официальное руководство по использованию слэш-команд многофункционального бота Волчонок (v1.2)</p>
         </header>
-
         <!-- Поиск -->
         <div class="search-box">
             <input type="text" id="searchInput" onkeyup="filterCommands()" placeholder="Поиск по командам или описанию...">
         </div>
-
         <!-- Сетка команд -->
         <div class="commands-grid" id="commandsGrid">
-
             <div class="command-card">
                 <div>
                     <div class="card-header">
-                        <span class="command-name">/warn</span>
+                        <span class="command-name">/info</span>
                         <span class="version-badge">v1.2</span>
                     </div>
-                    <div class="command-syntax">/warn [участник] [причина]</div>
-                    <p class="command-description">Выдает предупреждение (варн) участнику. При 3/3 предупреждениях бот автоматически заглушает его на 24 часа и отправляет сообщение в ЛС.</p>
+                    <div class="command-syntax">/info</div>
+                    <p class="command-description">Показывает общую статистику бота «Волчонок», текущий пинг, количество серверов и пользователей.</p>
                 </div>
             </div>
-
             <div class="command-card">
                 <div>
                     <div class="card-header">
-                        <span class="command-name">/unwarn</span>
+                        <span class="command-name">/infobot</span>
                         <span class="version-badge">v1.2</span>
                     </div>
-                    <div class="command-syntax">/unwarn [участник] [причина]</div>
-                    <p class="command-description">Снимает одно предупреждение с участника сервера и отправляет ему уведомление в ЛС.</p>
+                    <div class="command-syntax">/infobot</div>
+                    <p class="command-description">Выводит подробную информацию о версии бота, дате последнего обновления и полный список доступных команд.</p>
                 </div>
             </div>
-
-            <div class="command-card">
-                <div>
-                    <div class="card-header">
-                        <span class="command-name">/warns</span>
-                        <span class="version-badge">v1.2</span>
-                    </div>
-                    <div class="command-syntax">/warns</div>
-                    <p class="command-description">Показывает живой обновляемый список всех нарушителей на сервере. Если варнов нет — выводит сообщение о том, что на сервере царит порядок.</p>
-                </div>
-            </div>
-
             <div class="command-card">
                 <div>
                     <div class="card-header">
@@ -290,7 +248,86 @@
                     <p class="command-description">Назначает роль, которая будет автоматически выдаваться новым участникам при входе на сервер.</p>
                 </div>
             </div>
-
+            <div class="command-card">
+                <div>
+                    <div class="card-header">
+                        <span class="command-name">/warn</span>
+                        <span class="version-badge">v1.2</span>
+                    </div>
+                    <div class="command-syntax">/warn [участник] [причина]</div>
+                    <p class="command-description">Выдает предупреждение участнику. При 3/3 предупреждениях бот автоматически заглушает его на 24 часа и отправляет сообщение в ЛС.</p>
+                </div>
+            </div>
+            <div class="command-card">
+                <div>
+                    <div class="card-header">
+                        <span class="command-name">/unwarn</span>
+                        <span class="version-badge">v1.2</span>
+                    </div>
+                    <div class="command-syntax">/unwarn [участник] [причина]</div>
+                    <p class="command-description">Снимает одно предупреждение с участника сервера и отправляет ему уведомление в ЛС.</p>
+                </div>
+            </div>
+            <div class="command-card">
+                <div>
+                    <div class="card-header">
+                        <span class="command-name">/warns</span>
+                        <span class="version-badge">v1.2</span>
+                    </div>
+                    <div class="command-syntax">/warns</div>
+                    <p class="command-description">Показывает живой обновляемый список всех нарушителей на сервере с количеством варнов.</p>
+                </div>
+            </div>
+            <div class="command-card">
+                <div>
+                    <div class="card-header">
+                        <span class="command-name">/userinfo</span>
+                        <span class="version-badge">v1.2</span>
+                    </div>
+                    <div class="command-syntax">/userinfo [участник]</div>
+                    <p class="command-description">Показывает подробную информацию о пользователе (дату создания аккаунта, входа на сервер, список ролей и аватарку).</p>
+                </div>
+            </div>
+            <div class="command-card">
+                <div>
+                    <div class="card-header">
+                        <span class="command-name">/avatar</span>
+                        <span class="version-badge">v1.2</span>
+                    </div>
+                    <div class="command-syntax">/avatar [участник]</div>
+                    <p class="command-description">Показывает аватарку выбранного участника сервера (или вашу собственную, если никого не указывать).</p>
+                </div>
+            </div>
+            <div class="command-card">
+                <div>
+                    <div class="card-header">
+                        <span class="command-name">/ban</span>
+                        <span class="version-badge">v1.2</span>
+                    </div>
+                    <div class="command-syntax">/ban [участник] [причина]</div>
+                    <p class="command-description">Блокирует (банит) нарушителя на сервере с указанием причины.</p>
+                </div>
+            </div>
+            <div class="command-card">
+                <div>
+                    <div class="card-header">
+                        <span class="command-name">/unban</span>
+                        <span class="version-badge">v1.2</span>
+                    </div>
+                    <div class="command-syntax">/unban [тег_или_id] [причина]</div>
+                    <p class="command-description">Снимает блокировку с пользователя по его никнейму или ID в Discord.</p>
+                </div>
+            </div>
+            <div class="command-card">
+                <div>
+                    <div class="card-header">
+                        <span class="command-name">/kick</span>
+                        <span class="version-badge">v1.2</span>
+                    </div>
+                    <div class="command-syntax">/kick [участник] [причина]</div>
+                    <p class="command-description">Выгоняет (кикает) участника с сервера.</p>
+                </div>
+            </div>
             <div class="command-card">
                 <div>
                     <div class="card-header">
@@ -301,7 +338,6 @@
                     <p class="command-description">Выдает временный таймаут (мут) участнику на указанное число минут.</p>
                 </div>
             </div>
-
             <div class="command-card">
                 <div>
                     <div class="card-header">
@@ -312,18 +348,6 @@
                     <p class="command-description">Быстро удаляет от 1 до 100 сообщений в текущем текстовом канале.</p>
                 </div>
             </div>
-
-            <div class="command-card">
-                <div>
-                    <div class="card-header">
-                        <span class="command-name">/infobot</span>
-                        <span class="version-badge">v1.2</span>
-                    </div>
-                    <div class="command-syntax">/infobot</div>
-                    <p class="command-description">Выводит подробную информацию о версии бота «Волчонок», дате последнего обновления и список доступных команд.</p>
-                </div>
-            </div>
-
             <div class="command-card">
                 <div>
                     <div class="card-header">
@@ -331,12 +355,10 @@
                         <span class="version-badge">v1.2</span>
                     </div>
                     <div class="command-syntax">/serverinfo</div>
-                    <p class="command-description">Отображает полную информацию о сервере: количество участников, владельца, количество каналов и иконку.</p>
+                    <p class="command-description">Отображает полную информацию о текущем сервере: участников, владельца, каналы и иконку.</p>
                 </div>
             </div>
-
         </div>
-
         <!-- Кнопка поддержки -->
         <div class="support-container">
             <a href="mailto:volkchonoktex@gmail.com?subject=Вопрос%20в%20Тех.поддержку%20Волчонок" class="support-btn">
@@ -344,18 +366,15 @@
             </a>
         </div>
     </div>
-
     <footer>
         &copy; 2026 Официальная документация бота «Волчонок». Все права защищены.
     </footer>
-
     <script>
         function filterCommands() {
             const input = document.getElementById('searchInput');
             const filter = input.value.toLowerCase();
             const grid = document.getElementById('commandsGrid');
             const cards = grid.getElementsByClassName('command-card');
-
             for (let i = 0; i < cards.length; i++) {
                 const text = cards[i].innerText.toLowerCase();
                 if (text.includes(filter)) {
@@ -367,5 +386,5 @@
         }
     </script>
 </body>
-</html>
-
+    </html>
+    
